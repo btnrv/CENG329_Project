@@ -1,7 +1,6 @@
 ;-------------------------------------------------------------------------------
 ; MSP430 Assembler Code Template for use with TI Code Composer Studio
 ;
-;
 ;-------------------------------------------------------------------------------
             .cdecls C,LIST,"msp430.h"       ; Include device header file
 
@@ -38,8 +37,6 @@ StopWDT     mov.w   #WDTPW|WDTHOLD,&WDTCTL  ; Stop watchdog timer
 
     bis.w #GIE,SR                          ; Enable global interrupts
 
-
-
 START_GAME:
 	; Clear all LEDs
     bis.b #10111110b, &P1OUT
@@ -52,6 +49,7 @@ START_GAME:
     bis.b #00011000b, &P2IES               ; High-to-low transition
 	mov.w #0, r6 ; Reset reset flag
     call #COUNTER                          ; Start countdown
+
 GAME_LOOP:
     jmp GAME_LOOP
 
